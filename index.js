@@ -1,18 +1,21 @@
 const express = require('express')
 const app = express()
+app.use(express.json());
 
-const port = process.env.PORT || 8000;
-app.listen(port);
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+    console.log("listening to PORT", PORT);
+});
+const { riskRating } = require('./riskRatingTest.js')
 
-app.get("/", (req, res) => res.json({ message: 'Hello World' }))
-
-
-
+app.get("/", (req, res) => res.json({ message: 'Welcome to Turners API Page!' }))
+app.get("/risk", (req, res) => res.json({ message: 'Welcome to Risk Rating API!' }))
 app.get("/fifa", (req, res) => {
     res.send("Welcome to FIFA World Cup API!")
 })
 
-let teams = [{ "name": "Netherlands", "group": "A" }, { "name": "England", "group": "B" }, { "name": "Qatar", "group": "A" }, { "name": "Ecuador", "group": "A" }]
-app.get("/fifa/teams", (req, res) => {
-    res.send(teams)
+
+app.post("/risk/claim", (req, res) => {
+    console.log(JSON.stringify(riskRating(req.body.input)));
+    res.send(JSON.stringify(riskRating(req.body.input)));
 })
