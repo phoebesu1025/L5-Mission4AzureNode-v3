@@ -10,7 +10,7 @@ const testCases = [
     {
         scenario: "0 keywords match",
         input: { "input": "I have no claim" },
-        expected: 4
+        expected: 1
     },
 
     {
