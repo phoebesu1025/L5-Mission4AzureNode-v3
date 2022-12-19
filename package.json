@@ -5,7 +5,8 @@
     "scripts": {
         "start": "node index.js",
         "lint": "eslint",
-        "format": "prettier --single-quote --write *.js"
+        "format": "prettier --single-quote --write *.js",
+        "test": "jest"
     },
     "devDependencies": {
         "eslint": "^7.5.0",
