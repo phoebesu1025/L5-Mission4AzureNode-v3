@@ -1,5 +1,14 @@
 const express = require('express')
 const app = express()
+const cors = require('cors')
+const corsOptions = {
+    origin: '*',
+    credentials: true,            //access-control-allow-credentials:true
+    optionSuccessStatus: 200,
+}
+
+app.use(cors(corsOptions))
+app.use(cors())
 // const riskRating = require('./riskRating')
 app.use(express.json());
 
@@ -26,9 +35,8 @@ app.post("/risk/claim", (req, res) => {
         risk = 5
     }
 
-    console.log(value)
-    console.log(risk)
-    res.send({ risk })
+    console.log(`risk rating: ${risk}`)
+    res.send(` ${risk}`)
 })
 
 
